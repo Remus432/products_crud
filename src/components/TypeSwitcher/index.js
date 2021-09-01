@@ -11,40 +11,44 @@ const TypeSwitcher = ({ type }) => {
 
   return (
     <React.Fragment>
-      { 
-        type === "DVD" && (
+      
           <InputGroup>
-            <span>Size (MB)</span>
-            <input onKeyUp={e => addProperty(e.target.value, e.target.id)} id="size" type="number" name="size" /> 
+            <div className={type === "DVD" ? "show" : "hide"}>
+              <span>Size (MB)</span>
+              <input onKeyUp={e => addProperty(e.target.value, e.target.id)} id="size" type="number" name="size" /> 
+            </div>
           </InputGroup>
-        )
-      }
-      { 
-        type === "book" && (
+      
+      
           <InputGroup>
-            <span>Weight (Kg)</span>
-            <input onKeyUp={e => addProperty(e.target.value, e.target.id)} id="weight" type="number" name="weight" /> 
+            <div className={type === "book" ? "show" : "hide"}>
+              <span>Weight (Kg)</span>
+              <input onKeyUp={e => addProperty(e.target.value, e.target.id)} id="weight" type="number" name="weight" /> 
+            </div>
           </InputGroup>
-        )
-      }
-      { 
-        type === "furniture" && (
+     
+   
           <React.Fragment>
             <InputGroup>
-              <span>Height (CM)</span>
-              <input onKeyUp={e => addProperty(e.target.value, e.target.id)} id="height" type="number" name="height" /> 
+              <div className={type === "furniture" ? "show" : "hide"}>
+                <span>Height (CM)</span>
+                <input onKeyUp={e => addProperty(e.target.value, e.target.id)} id="height" type="number" name="height" /> 
+              </div>
             </InputGroup>
             <InputGroup>
-              <span>Width (CM)</span>
-              <input onKeyUp={e => addProperty(e.target.value, e.target.id)} id="width" type="number" name="width" /> 
+              <div className={type === "furniture" ? "show" : "hide"}>
+                <span>Width (CM)</span>
+                <input onKeyUp={e => addProperty(e.target.value, e.target.id)} id="width" type="number" name="width" /> 
+              </div>
             </InputGroup>
-            <InputGroup>
-              <span>Length (CM)</span>
-              <input onKeyUp={e => addProperty(e.target.value, e.target.id)} id="length" type="number" name="length" /> 
+            <InputGroup> 
+              <div className={type === "furniture" ? "show" : "hide"}>
+                <span>Length (CM)</span>
+                <input onKeyUp={e => addProperty(e.target.value, e.target.id)} id="length" type="number" name="length" /> 
+              </div>
             </InputGroup>
           </React.Fragment>
-        )
-      }
+      
     </React.Fragment>
   )
 }

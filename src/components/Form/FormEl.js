@@ -2,6 +2,8 @@ import styled from "styled-components"
 import variables from "../variables"
 
 export const FormContainer = styled.form`
+  margin-top: 2rem;
+
   & .msg {
     font-weight: bold;
   }
@@ -14,7 +16,7 @@ export const FormContainer = styled.form`
 export const InputGroup = styled.div`
   display: flex;
   align-items: center;
-  margin: 2rem 0;
+  margin: .8rem 0;
 
   & span {
     margin-right: 1rem;
