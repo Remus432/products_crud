@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 import { BtnPrimary, BtnDanger, Group } from "./ButtonsEl"
 import { ThemeContext } from "../../ThemeContext"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 const BtnGroup = ({ buttons }) => {
-  const [state, setState] = useContext(ThemeContext)
+  const [state] = useContext(ThemeContext)
+  const history = useHistory()
 
   function saveProduct() {    
     fetch("http://localhost:3001/index.php", {
@@ -16,15 +17,15 @@ const BtnGroup = ({ buttons }) => {
         "Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify({
-        ...state, property: `${state.property}`
+        ...state, property: state.property
       })
     }).then(res => {
-      console.log(res)
+      history.push("/")
     })
+  }
 
-    fetch("http://localhost:3001/index.php")
-    .then(res => res.json())
-    .then(data => console.log(data))
+  function deleteProducts() {
+   
   }
 
   return (
@@ -35,9 +36,9 @@ const BtnGroup = ({ buttons }) => {
             case "Add":
               return <Link key={i}  to="/add-product"><BtnPrimary>{item}</BtnPrimary></Link>
             case "Mass Delete":
-              return <BtnDanger key={i} id="delete-product-btn">{item}</BtnDanger>
+              return <BtnDanger onClick={deleteProducts} key={i} id="delete-product-btn">{item}</BtnDanger>
             case "Save":
-              return <Link to="/"><BtnPrimary onClick={saveProduct} key={i} >{item}</BtnPrimary></Link>
+              return <BtnPrimary onClick={saveProduct} key={i} >{item}</BtnPrimary>
             case "Cancel":
               return <Link key={i} to="/"><BtnDanger>{item}</BtnDanger></Link>
               default: 
