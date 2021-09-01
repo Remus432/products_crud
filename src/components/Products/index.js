@@ -9,7 +9,7 @@ const Products = () => {
   useEffect(() => {
 
     async function fetchData() {
-      const res = await fetch("http://localhost:3001")
+      const res = await fetch("https://backend-crud-api.herokuapp.com/")
       const data = await res.clone().json() || []
       console.log(data)
       await setProducts(data)

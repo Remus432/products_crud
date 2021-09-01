@@ -19,7 +19,7 @@ export function errMsg(err) {
 }
 
 export function sendData(state) {
-  return fetch("http://localhost:3001/add.php", {
+  return fetch("https://backend-crud-api.herokuapp.com/add.php", {
       method: "POST",
       mode: "no-cors",
       credentials: "omit",
@@ -34,7 +34,7 @@ export function sendData(state) {
 }
 
 export function deleteData(list) {
-  return fetch("http://localhost:3001/delete.php", {
+  return fetch("https://backend-crud-api.herokuapp.com/delete.php", {
       method: "POST",
       mode: "no-cors",
       credentials: "omit",
