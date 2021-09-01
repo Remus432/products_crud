@@ -35,7 +35,7 @@ const BtnGroup = ({ buttons }) => {
             case "MASS DELETE":
               return <BtnDanger onClick={deleteProducts} key={i} id="delete-product-btn">{item}</BtnDanger>
             case "SAVE":
-              return <BtnPrimary form="product-form" type="submit" onClick={saveProduct} key={i} >{item}</BtnPrimary>
+              return <BtnPrimary form="product_form" type="submit" onClick={saveProduct} key={i} >{item}</BtnPrimary>
             case "CANCEL":
               return <Link key={i} to="/"><BtnDanger>{item}</BtnDanger></Link>
               default: 

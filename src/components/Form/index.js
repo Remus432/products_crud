@@ -25,7 +25,7 @@ const Form = () => {
   }
 
   return (
-    <FormContainer onSubmit={e => e.preventDefault()} id="product-form" method="POST">
+    <FormContainer onSubmit={e => e.preventDefault()} id="product_form" method="POST">
       <InputGroup>
         <span>SKU</span>
         <input onKeyUp={e => addVal(e.target.value, e.target.id)} id="sku" type="text" name="sku" required />
