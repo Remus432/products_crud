@@ -4,7 +4,7 @@ import { NavContainer } from "./NavEl"
 
 const Nav = ({ pathname}) => {
   const headline = pathname === "/" ? "Product List" : "Product Add"
-  const buttons = pathname === "/" ? ["Add", "Mass Delete"] : ["Save", "Cancel"]
+  const buttons = pathname === "/" ? ["ADD", "MASS DELETE"] : ["SAVE", "CANCEL"]
 
   return (
     <NavContainer>

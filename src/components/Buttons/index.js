@@ -30,13 +30,13 @@ const BtnGroup = ({ buttons }) => {
       {
         buttons.map((item, i) => {
           switch(item) {
-            case "Add":
+            case "ADD":
               return <Link key={i}  to="/add-product"><BtnPrimary>{item}</BtnPrimary></Link>
-            case "Mass Delete":
+            case "MASS DELETE":
               return <BtnDanger onClick={deleteProducts} key={i} id="delete-product-btn">{item}</BtnDanger>
-            case "Save":
+            case "SAVE":
               return <BtnPrimary form="product-form" type="submit" onClick={saveProduct} key={i} >{item}</BtnPrimary>
-            case "Cancel":
+            case "CANCEL":
               return <Link key={i} to="/"><BtnDanger>{item}</BtnDanger></Link>
               default: 
                 return item
