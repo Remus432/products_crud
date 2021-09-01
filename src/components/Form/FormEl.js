@@ -5,6 +5,10 @@ export const FormContainer = styled.form`
   & .msg {
     font-weight: bold;
   }
+
+  & .err {
+    color: ${variables.err};
+  }
 `
 
 export const InputGroup = styled.div`

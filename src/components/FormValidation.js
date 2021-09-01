@@ -1,11 +1,14 @@
 export function formValidation({ sku, name, price, productType, property }) {
-  if (!sku || !name || !price || !productType || !property) {
+  if (!sku || !name || !price || !productType || Object.keys(property).length === 0) {
     return "empty"
   }
 
-  if (isNaN(property.size) || isNaN(property.weight) || isNaN(property.height) || isNaN(property.width) || isNaN(property.length)) {
-    return "invalid"
-  }
+  if (isNaN(property.weight) && property.weight !== undefined) return "invalid"
+  if (isNaN(property.size) && property.size !== undefined) return "invalid"
+  if (isNaN(property.height) && property.height !== undefined) return "invalid"
+  if (isNaN(property.width) && property.width !== undefined) return "invalid"
+  if (isNaN(property.length) && property.length !== undefined) return "invalid"
+  if (isNaN(property.price) && property.price !== undefined) return "invalid"
 
   return true
 }
@@ -16,7 +19,7 @@ export function errMsg(err) {
 }
 
 export function sendData(state) {
-  return fetch("http://localhost:3001/index.php", {
+  return fetch("http://localhost:3001/add.php", {
       method: "POST",
       mode: "no-cors",
       credentials: "omit",
@@ -31,7 +34,7 @@ export function sendData(state) {
 }
 
 export function deleteData(list) {
-  return fetch("http://localhost:3001/index.php", {
+  return fetch("http://localhost:3001/delete.php", {
       method: "POST",
       mode: "no-cors",
       credentials: "omit",

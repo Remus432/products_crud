@@ -3,7 +3,7 @@ import { ThemeContext } from "../../ThemeContext"
 import { InputGroup } from "../Form/FormEl"
 
 const TypeSwitcher = ({ type }) => {
-  const [state, dispatch] = useContext(ThemeContext)
+  const [,dispatch] = useContext(ThemeContext)
 
   function addProperty(val, id) {
     dispatch({ type: "ADD_PROPERTY", payload: { [id]: parseInt(val) }})

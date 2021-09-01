@@ -1,18 +1,17 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { BtnPrimary, BtnDanger, Group } from "./ButtonsEl"
 import { ThemeContext } from "../../ThemeContext"
 import { Link, useHistory } from "react-router-dom"
 import { formValidation, errMsg, sendData, deleteData } from "../FormValidation"
 
 const BtnGroup = ({ buttons }) => {
-  const [state] = useContext(ThemeContext)
-  const [err, setMsg] = useState("")
+  const [state, dispatch] = useContext(ThemeContext)
   const history = useHistory()
 
   function saveProduct() {    
-    if (formValidation(state)) sendData(state).then(() => history.push("/"))
-    if (formValidation(state) === "empty") setMsg(errMsg("empty"))
-    if (formValidation(state) === "invalid") setMsg(errMsg("invalid"))
+    if (typeof formValidation(state.product) === "boolean") sendData(state.product).then(() => history.push("/"))
+    if (formValidation(state.product) === "empty") dispatch({ type: "ERROR", payload: {msg: errMsg("empty")}})
+    if (formValidation(state.product) === "invalid") dispatch({ type: "ERROR", payload: {msg: errMsg("invalid")}})
   }
 
   function deleteProducts() {

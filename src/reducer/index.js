@@ -2,18 +2,26 @@ const reducer = (state, action) => {
   switch(action.type) {
     case "ADD_PROPERTY":
       return {
-        ...state,
-        property: {...state.property, ...action.payload}
+        product: {
+          ...state.product,
+          property: {...state.product.property, ...action.payload}
+        },
+        err: ""
       }
     case "ADD_VAL":
       return {
-        ...state,
-        ...action.payload
+        product: {...state.product, ...action.payload},
+        err: ""
       }
     case "RESET_PROP":
       return {
-        ...state,
-        property: {}
+        product: {...state.product, property: {}},
+        err: ""
+      }
+    case "ERROR":
+      return {
+        product: {...state.product},
+        err: action.payload.msg
       }
     default:
       return state

@@ -4,7 +4,8 @@ const variables = {
   btn_danger: "#fc5c65",
   btn_primary_hover: "#3867d6",
   btn_danger_hover: "#eb3b5a",
-  bg: "#3867d6"
+  bg: "#3867d6",
+  err: "#eb3b5a"
 }
 
 export default variables

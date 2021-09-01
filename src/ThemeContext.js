@@ -2,11 +2,14 @@ import React, { createContext, useReducer } from "react"
 import reducer from "./reducer"
 
 const initialState = {
-  sku: "",
-  name: "",
-  price: 0,
-  productType: "",
-  property: {}
+  product: {
+    sku: "",
+    name: "",
+    price: 0,
+    productType: "",
+    property: {}
+  },
+  err: ""
 }
 
 export const ThemeContext = createContext(initialState)

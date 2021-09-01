@@ -9,8 +9,9 @@ const Products = () => {
   useEffect(() => {
 
     async function fetchData() {
-      const res = await fetch("http://localhost:80/practice/api/index.php")
-      const data = await res.clone().json()
+      const res = await fetch("http://localhost:3001")
+      const data = await res.clone().json() || []
+      console.log(data)
       await setProducts(data)
     }
 

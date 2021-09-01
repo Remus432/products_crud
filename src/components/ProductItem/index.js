@@ -11,6 +11,8 @@ const ProductItem = ({ name, price, sku, type, property }) => {
         return <p>Weight: {property.weight}Kg</p>
       case "furniture":
         return <p>Dimensions: {property.height}x{property.width}x{property.length}</p>
+        default:
+          return ""
     }
   }
 

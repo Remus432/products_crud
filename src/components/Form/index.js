@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { FormContainer, InputGroup } from "./FormEl"
 import TypeSwitcher from "../TypeSwitcher"
 import { ThemeContext } from "../../ThemeContext"
@@ -9,7 +9,7 @@ const Form = () => {
   const [state, dispatch] = useContext(ThemeContext)
 
   function addVal(val, id) {
-    dispatch({ type: "ADD_VAL", payload: {[id]: val}})
+    dispatch({ type: "ADD_VAL", payload: {[id]: id === "price" ? parseInt(val) : val}})
   }
 
   function displaySwitcher(type) {
@@ -18,9 +18,11 @@ const Form = () => {
     if (type === "furniture") return "Please, provide dimensions in CM."
   }
 
-  useEffect(() => {
+  function selectType(e) {
+    addVal(e.target.value, e.target.id)
+    setType(e.target.value)
     dispatch({ type: "RESET_PROP" })
-  }, [typeSwitcher])
+  }
 
   return (
     <FormContainer onSubmit={e => e.preventDefault()} id="product-form" method="POST">
@@ -38,10 +40,7 @@ const Form = () => {
       </InputGroup>
       <InputGroup>
         <span>Type Switcher</span>
-        <select required onInput={e => {
-          setType(e.target.value)
-          addVal(e.target.value, e.target.id)
-        }}  id="productType">
+        <select required onInput={e => selectType(e)}  id="productType">
           <option defaultValue hidden></option>
           <option id="DVD" value="DVD">DVD-disc</option>
           <option id="book" value="book">Book</option>
@@ -50,6 +49,7 @@ const Form = () => {
       </InputGroup>
       {typeSwitcher && <TypeSwitcher type={typeSwitcher} />}
       {typeSwitcher && <p className="msg">{displaySwitcher(typeSwitcher)}</p> }
+      {state.err && <p className="err">{state.err}</p>}
     </FormContainer>
   )
 }
