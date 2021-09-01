@@ -3,13 +3,11 @@ import { ThemeContext } from "../../ThemeContext"
 import { InputGroup } from "../Form/FormEl"
 
 const TypeSwitcher = ({ type }) => {
-  const [state, setState] = useContext(ThemeContext)
+  const [state, dispatch] = useContext(ThemeContext)
 
   function addProperty(val, id) {
-    setState(() => ({...state, property: { ...state.property, [id]: parseInt(val) }}))
+    dispatch({ type: "ADD_PROPERTY", payload: { [id]: parseInt(val) }})
   }
-
-  console.log(state)
 
   return (
     <React.Fragment>

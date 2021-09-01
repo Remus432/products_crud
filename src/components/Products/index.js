@@ -22,7 +22,7 @@ const Products = () => {
     <ProductsContainer>
       {
         products.map((item, i) => (
-          <ProductItem key={i} name={item.name} sku={item.sku} price={item.price} property={item.property} type={item.type} />
+          <ProductItem key={i} name={item.name} sku={item.sku} price={item.price} property={JSON.parse(item.property)} type={item.type} />
         ))
       }
     </ProductsContainer>

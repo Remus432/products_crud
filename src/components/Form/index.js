@@ -6,39 +6,39 @@ import { ThemeContext } from "../../ThemeContext"
 const Form = () => {
 
   const [typeSwitcher, setType] = useState("")
-  const [state, setState] = useContext(ThemeContext)
-
-  function formSubmit(e) {
-    e.preventDefault()
-  }
+  const [state, dispatch] = useContext(ThemeContext)
 
   function addVal(val, id) {
-    setState(() => ({...state, [id]: val}))
+    dispatch({ type: "ADD_VAL", payload: {[id]: val}})
+  }
+
+  function displaySwitcher(type) {
+    if (type === "DVD") return "Please, provide size in MB."
+    if (type === "book") return "Please, provide weight in Kg."
+    if (type === "furniture") return "Please, provide dimensions in CM."
   }
 
   useEffect(() => {
-    setState(() => ({...state, property: {}}))
+    dispatch({ type: "RESET_PROP" })
   }, [typeSwitcher])
 
-
-  console.log(state)
   return (
-    <FormContainer onSubmit={e => formSubmit(e)} id="product-form" method="POST">
+    <FormContainer onSubmit={e => e.preventDefault()} id="product-form" method="POST">
       <InputGroup>
         <span>SKU</span>
-        <input onKeyUp={e => addVal(e.target.value, e.target.id)} id="sku" type="text" name="sku" />
+        <input onKeyUp={e => addVal(e.target.value, e.target.id)} id="sku" type="text" name="sku" required />
       </InputGroup>
       <InputGroup>
         <span>Name</span>
-        <input onKeyUp={e => addVal(e.target.value, e.target.id)} id="name" type="text" name="name" />
+        <input onKeyUp={e => addVal(e.target.value, e.target.id)} id="name" type="text" name="name" required />
       </InputGroup>
       <InputGroup>
         <span>Price ($)</span>
-        <input onKeyUp={e => addVal(e.target.value, e.target.id)} id="price" type="number" name="price" />
+        <input onKeyUp={e => addVal(e.target.value, e.target.id)} id="price" type="number" name="price" required />
       </InputGroup>
       <InputGroup>
         <span>Type Switcher</span>
-        <select onInput={e => {
+        <select required onInput={e => {
           setType(e.target.value)
           addVal(e.target.value, e.target.id)
         }}  id="productType">
@@ -48,10 +48,8 @@ const Form = () => {
           <option id="furniture" value="furniture">Furniture</option>
         </select>
       </InputGroup>
-      { 
-        typeSwitcher && <TypeSwitcher type={typeSwitcher} />
-      }
-      <input type="submit" hidden/>
+      {typeSwitcher && <TypeSwitcher type={typeSwitcher} />}
+      {typeSwitcher && <p className="msg">{displaySwitcher(typeSwitcher)}</p> }
     </FormContainer>
   )
 }

@@ -2,7 +2,9 @@ import styled from "styled-components"
 import variables from "../variables"
 
 export const FormContainer = styled.form`
-  
+  & .msg {
+    font-weight: bold;
+  }
 `
 
 export const InputGroup = styled.div`

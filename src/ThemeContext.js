@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useReducer } from "react"
+import reducer from "./reducer"
 
 const initialState = {
   sku: "",
@@ -11,10 +12,10 @@ const initialState = {
 export const ThemeContext = createContext(initialState)
 
 export const ThemeContextProvider = ({ children }) => {
-  const [state, setState] = useState(initialState)
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
-    <ThemeContext.Provider value={[state, setState]}>
+    <ThemeContext.Provider value={[state, dispatch]}>
     { children }
     </ThemeContext.Provider>
   )
