@@ -47,6 +47,11 @@ const Form = () => {
           <option id="furniture" value="furniture">Furniture</option>
         </select>
       </InputGroup>
+      <input type="number" id="size" />
+      <input type="number" id="weight" />
+      <input type="number" id="height" />
+      <input type="number" id="length" />
+      <input type="number" id="width" />
       {typeSwitcher && <TypeSwitcher type={typeSwitcher} />}
       {typeSwitcher && <p className="msg">{displaySwitcher(typeSwitcher)}</p> }
       {state.err && <p className="err">{state.err}</p>}
