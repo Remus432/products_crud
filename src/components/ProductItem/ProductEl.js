@@ -11,6 +11,11 @@ export const ProductItemContainer = styled.div`
   padding: 2rem;
   border-radius: 10px;
   position: relative;
+  transition: transform .2s ease-in;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 
   & p {
     margin: .5rem 0;
