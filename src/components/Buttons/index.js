@@ -17,12 +17,9 @@ const BtnGroup = ({ buttons }) => {
   function deleteProducts() {
    const inputs = Array.from(document.querySelectorAll(".delete-checkbox"))
    const list = inputs.filter(input => input.checked).map(input => input.nextElementSibling.textContent)
+   dispatch({ type: "DELETE", payload: {ids: [...list]} })
    
-   deleteData(list).then(() => {
-      history.push("/ ")
-      history.push("/")
-    })
-   
+   deleteData(list)
   }
   
   return (

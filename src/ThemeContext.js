@@ -9,7 +9,8 @@ const initialState = {
     productType: "",
     property: {}
   },
-  err: ""
+  err: "",
+  ids: []
 }
 
 export const ThemeContext = createContext(initialState)
