@@ -1,7 +1,7 @@
 # Full-stack CRUD Product Web App 
 
 ![Design Preview](./preview.gif)
-
+[Live Site](https://products-crud-gilt.vercel.app/)
 * **
 
 ## Technologies
